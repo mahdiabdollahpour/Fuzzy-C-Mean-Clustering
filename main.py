@@ -5,10 +5,15 @@ data1 = np.random.normal(3, 1, size=(1000, 2))
 data2 = np.random.normal(100, 1, size=(1000, 2))
 data = np.concatenate((data1, data2), axis=0)
 
-# data = np.random.normal(10, 1, size=(2, 2))
+# data = np.random.normal(20, 20, size=(2, 2))
 
 print(np.shape(data))
+print(data)
 res = fcmean(c=2, iter_num=3, data=data)
 
 print("------- Result --------")
 print(res)
+# for i in range(len(res)):
+#     if res[i] != res[0]:
+#         print(i)
+#         break

@@ -23,13 +23,20 @@ def fcmean(c, iter_num, data):
         for j in range(c):
             for k in range(row_num):
                 memberships[k][j] = (1 / (D[k][j] + epsilon)) / np.sum([(1 / (d + epsilon)) for d in D[k]])
-        print(memberships)
+        # print(memberships)
         for j in range(c):
             # print("m", np.shape(memberships[:,j]))
-            inside_zigma = [pow(u, m) for u in memberships[:, j]]
-            # print("inside_zigma", np.shape(inside_zigma))
-            sorat = np.matmul(inside_zigma, data)
+            uikpowm = [pow(u, m) for u in memberships[:, j]]
+            # print("uikpowm", np.shape(uikpowm))
+            sorat = [uikpowm[i] * data[i] for i in range(row_num)]
             # print("sorat", np.shape(sorat))
-            centers[j] = np.sum(sorat) / np.sum(inside_zigma)
+            # print("sorat", sorat)
+            # print("sorat[0]", sorat[0])
+            # print("inside zigma sum", np.sum(uikpowm))
+            # print("inside zigma ", uikpowm)
+            for i in range(feature_num):
+                centers[j][i] = np.sum([sorat[k][i] / np.sum(uikpowm) for k in range(row_num)])
+        # print("new centers", centers)
+    ## TODO : Return Value must be a list (array) containing cluster centers
 
     return [np.argmax(memberships[i]) for i in range(row_num)]
