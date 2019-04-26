@@ -39,4 +39,4 @@ def fcmean(c, iter_num, data):
         # print("new centers", centers)
     ## TODO : Return Value must be a list (array) containing cluster centers
 
-    return [np.argmax(memberships[i]) for i in range(row_num)]
+    return centers, [np.argmax(memberships[i]) for i in range(row_num)]
