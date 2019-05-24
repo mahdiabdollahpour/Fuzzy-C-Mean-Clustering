@@ -1,7 +1,11 @@
 import numpy as np
 from fcm import fcmean
 
+from plots import plot_points, plot_points_colored
+
 recs = 200
+# data = np.random.normal(0, 5, size=(recs, 2))
+
 data1 = np.random.normal(10, 1, size=(recs, 2))
 data2 = np.random.normal(12, 1, size=(recs, 2))
 data3 = np.random.normal(14, 1, size=(recs, 2))
@@ -12,15 +16,16 @@ number_of_clustes = 3
 
 print(np.shape(data))
 # print(data)
-centers, res = fcmean(c=number_of_clustes, iter_num=10, data=data)
+plot_points(data)
+
+centers, res = fcmean(c=number_of_clustes, iter_num=15, data=data)
 
 print("------- Result --------")
 print(res)
 print(centers)
 print(len(centers))
-from plots import plot_points
 
-plot_points(data, res, centers)
+plot_points_colored(data, res, centers)
 
 # for i in range(len(res)):
 #     if res[i] != res[0]:

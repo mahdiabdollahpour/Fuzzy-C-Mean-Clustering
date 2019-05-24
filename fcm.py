@@ -12,6 +12,8 @@ def fcmean(c, iter_num, data):
     centers = np.zeros(shape=(c, feature_num))
     random_records = random.sample(range(row_num), c)
     print(random_records)
+    prev = [0 for i in range(row_num)]
+
     for i in range(c):
         centers[i] = data[random_records[i]]
     for i in range(iter_num):
@@ -37,6 +39,11 @@ def fcmean(c, iter_num, data):
             for i in range(feature_num):
                 centers[j][i] = np.sum([sorat[k][i] / np.sum(uikpowm) for k in range(row_num)])
         # print("new centers", centers)
+        now = [np.argmax(memberships[i]) for i in range(row_num)]
+        if now == prev:
+            return centers, now
+        else:
+            prev = now
     ## TODO : Return Value must be a list (array) containing cluster centers
 
     return centers, [np.argmax(memberships[i]) for i in range(row_num)]

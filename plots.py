@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 
 
-def plot_points(data, res, centers):
+def plot_points_colored(data, res, centers):
     g0_d0 = [data[i][0] for i in range(len(res)) if res[i] == 0]
     g0_d1 = [data[i][1] for i in range(len(res)) if res[i] == 0]
 
@@ -13,5 +13,13 @@ def plot_points(data, res, centers):
 
     plt.plot(g0_d0, g0_d1, 'ro', g1_d0, g1_d1, 'yo', g2_d0, g2_d1, 'go')
     for i in range(len(centers)):
-        plt.plot(centers[i][0],centers[i][1],'b^',markersize=20)
+        plt.plot(centers[i][0], centers[i][1], 'b^', markersize=20)
+    plt.show()
+
+
+def plot_points(data):
+    g_d0 = data[:,0]
+    g_d1 = data[:,1]
+
+    plt.plot(g_d0, g_d1,'bo')
     plt.show()
